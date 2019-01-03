@@ -2,7 +2,16 @@ package nebja.beans;
 
 import java.io.File;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
 
+@Entity
+@Table
 public class Movie {
 public Movie(int movieid, File moviephoto, String title, double avgscore) {
 		super();
@@ -18,10 +27,16 @@ public Movie(int movieid, String title, double avgscore) {
 	this.title = title;
 	this.avgscore = avgscore;
 }
-
+@Id
+@GeneratedValue(strategy= GenerationType.AUTO,generator="movieSequence")
+@SequenceGenerator(allocationSize=1, name="movieSequence", sequenceName= "SQ_MOVIE_PK")
+@Column
 private int movieid;
+@Column
 private File moviephoto;
+@Column
 private String title;
+@Column
 private double avgscore;
 public int getMovieid() {
 	return movieid;

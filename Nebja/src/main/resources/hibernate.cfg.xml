@@ -13,6 +13,6 @@
         	<!-- choose to start fresh or update existing ddl -->
         	<property name= "hibernate.hbm2ddl.auto">update</property>
         	<!-- location of domain object mappings -->
-       		
+       		<mapping class= "nebja.beans.User"></mapping>
         	</session-factory>
         </hibernate-configuration>

@@ -7,12 +7,11 @@ import nebja.beans.User;
 
 public interface UserDAO {
 	public List<User> getAllUsers();
-	public void createUsernameandPassword(User username, String password);
-	public void updateUsername(String username);
-	public void updatePassword(String password);
+	public void createUser(User user);
+	public void updateUsername(String username1,int id);
+	public void updatePassword(String password,int id);
 	public void createProfilePhoto(File photo);
-	public void createProfileInfo(String profileinfo);
-	public void updateprofileInfo(String profileInfo);
+	public void updateprofileInfo(String profileInfo, int id);
 	public void updateProfilePhoto(File photo);
 
 }

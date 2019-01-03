@@ -1,13 +1,29 @@
 package nebja.beans;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
+
+@Entity
+@Table
 public class Review {
-public Review(int reviewid, String moviereview) {
+public Review(int reviewid, String moviereview, int reviewscore) {
 		super();
 		this.reviewid = reviewid;
 		this.moviereview = moviereview;
 	}
+@Id
+@GeneratedValue(strategy= GenerationType.AUTO,generator="reviewSequence")
+@SequenceGenerator(allocationSize=1, name="reviewSequence", sequenceName= "SQ_REVIEW_PK")
+@Column
 private int reviewid;
+@Column
 private String moviereview;
+private int reviewscore;
 public int getReviewid() {
 	return reviewid;
 }
@@ -26,6 +42,7 @@ public int hashCode() {
 	int result = 1;
 	result = prime * result + ((moviereview == null) ? 0 : moviereview.hashCode());
 	result = prime * result + reviewid;
+	result = prime * result + reviewscore;
 	return result;
 }
 @Override
@@ -44,11 +61,20 @@ public boolean equals(Object obj) {
 		return false;
 	if (reviewid != other.reviewid)
 		return false;
+	if (reviewscore != other.reviewscore)
+		return false;
 	return true;
 }
 @Override
 public String toString() {
-	return "Review [reviewid=" + reviewid + ", moviereview=" + moviereview + "]";
+	return "Review [reviewid=" + reviewid + ", moviereview=" + moviereview + ", reviewscore=" + reviewscore + "]";
+}
+
+public int getReviewscore() {
+	return reviewscore;
+}
+public void setReviewscore(int reviewscore) {
+	this.reviewscore = reviewscore;
 };
 
 }

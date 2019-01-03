@@ -1,12 +1,27 @@
 package nebja.beans;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
+
+@Entity
+@Table
 public class Comment {
 public Comment(int commentid, String usercomment) {
 		super();
 		this.commentid = commentid;
 		this.usercomment = usercomment;
 	}
+@Id
+@GeneratedValue(strategy= GenerationType.AUTO,generator="commentSequence")
+@SequenceGenerator(allocationSize=1, name="commentSequence", sequenceName= "SQ_COMMENT_PK")
+@Column
 private int commentid;
+@Column
 private String usercomment;
 public int getCommentid() {
 	return commentid;

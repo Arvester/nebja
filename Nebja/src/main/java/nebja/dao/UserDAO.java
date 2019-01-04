@@ -10,8 +10,8 @@ public interface UserDAO {
 	public void createUser(User user);
 	public void updateUsername(String username1,int id);
 	public void updatePassword(String password,int id);
-	public void createProfilePhoto(File photo);
 	public void updateprofileInfo(String profileInfo, int id);
-	public void updateProfilePhoto(File photo);
+	public void updateProfilePhoto(File photo, int id);
+	public File getPhoto(int id);
 
 }

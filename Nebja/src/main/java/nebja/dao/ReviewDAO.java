@@ -7,7 +7,6 @@ import nebja.beans.User;
 
 public interface ReviewDAO {
 public List<Review> getAllReviews();
-public String getUserReview(User id);
-public void createUserReview(String review);
-public void createUserScore(int score);
+public String getUserReview(int id);
+public void createUserReview(Review review);
 }

@@ -12,7 +12,7 @@ import javax.persistence.Table;
 @Entity
 @Table(name="MOVIEUSER")
 public class User {
-public User(String username, String password, File picture, String profileinfo, int userid) {
+public User(String username, String password, byte[] picture, String profileinfo, int userid) {
 		super();
 		this.username = username;
 		this.password = password;
@@ -39,7 +39,7 @@ private String username;
 @Column (name="PASSWORD")
 private String password;
 @Column(name="PICTURE")
-private File picture;
+private byte[] picture;
 @Column (name="PROFILE_INFO")
 private String profileinfo;
 public String getUsername() {
@@ -54,10 +54,10 @@ public String getPassword() {
 public void setPassword(String password) {
 	this.password = password;
 }
-public File getPicture() {
+public byte[] getPicture() {
 	return picture;
 }
-public void setPicture(File picture) {
+public void setPicture(byte[] picture) {
 	this.picture = picture;
 }
 public String getProfileinfo() {

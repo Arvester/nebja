@@ -8,6 +8,6 @@ import nebja.beans.User;
 public interface CommentDAO {
 	public List<Comment> getAllComments();
 	public List<Comment> getAllCommentsbyID(int id);
-	public String makeAComment(User id, String comment);
+	public void makeAComment(Comment comment);
 
 }

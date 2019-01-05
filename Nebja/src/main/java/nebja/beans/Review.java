@@ -1,29 +1,41 @@
 package nebja.beans;
 
 import javax.persistence.Column;
+import javax.persistence.ConstraintMode;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.ForeignKey;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity
-@Table
+@Table(name ="REVIEW")
 public class Review {
-public Review(int reviewid, String moviereview, int reviewscore) {
+public Review(String moviereview, int reviewscore) {
 		super();
-		this.reviewid = reviewid;
+		this.reviewscore = reviewscore;
 		this.moviereview = moviereview;
 	}
+
+public Review() {
+}
 @Id
 @GeneratedValue(strategy= GenerationType.AUTO,generator="reviewSequence")
 @SequenceGenerator(allocationSize=1, name="reviewSequence", sequenceName= "SQ_REVIEW_PK")
-@Column
+@Column(name="REVIEW_ID")
 private int reviewid;
-@Column
+@Column(name="MOVIE_REVIEW")
 private String moviereview;
+@Column(name="REVIEW_SCORE")
 private int reviewscore;
+@ManyToOne(fetch = FetchType.EAGER)
+@JoinColumn(name = "MOVIE_ID", foreignKey = @ForeignKey(ConstraintMode.CONSTRAINT))
+private Movie movie;
 public int getReviewid() {
 	return reviewid;
 }

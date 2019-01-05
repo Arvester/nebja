@@ -1,18 +1,21 @@
 package nebja.beans;
 
-import java.io.File;
-
 import javax.persistence.Column;
+import javax.persistence.ConstraintMode;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.ForeignKey;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 @Entity
 @Table(name="MOVIEUSER")
 public class User {
-public User(String username, String password, File picture, String profileinfo, int userid) {
+public User(String username, String password, byte[] picture, String profileinfo, int userid) {
 		super();
 		this.username = username;
 		this.password = password;
@@ -39,9 +42,15 @@ private String username;
 @Column (name="PASSWORD")
 private String password;
 @Column(name="PICTURE")
-private File picture;
+private byte[] picture;
 @Column (name="PROFILE_INFO")
 private String profileinfo;
+@ManyToOne(fetch = FetchType.EAGER)
+@JoinColumn(name = "COMMENT_ID", foreignKey = @ForeignKey(ConstraintMode.CONSTRAINT))
+private Comment comment;
+@ManyToOne(fetch = FetchType.EAGER)
+@JoinColumn(name = "REVIEW_ID", foreignKey = @ForeignKey(ConstraintMode.CONSTRAINT))
+private Review review;
 public String getUsername() {
 	return username;
 }
@@ -54,10 +63,10 @@ public String getPassword() {
 public void setPassword(String password) {
 	this.password = password;
 }
-public File getPicture() {
+public byte[] getPicture() {
 	return picture;
 }
-public void setPicture(File picture) {
+public void setPicture(byte[] picture) {
 	this.picture = picture;
 }
 public String getProfileinfo() {

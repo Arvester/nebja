@@ -14,6 +14,10 @@ import nebja.util.NebjaUtil;
 public class MovieDAOImpl implements MovieDAO {
 static SessionFactory sf = NebjaUtil.getSessionFactory();
 
+
+/**
+ * It gets all movies in our movie database
+ */
 	@Override
 	public List<Movie> getAllMovies() {
 		List<Movie> movies = new ArrayList<>();	
@@ -25,7 +29,9 @@ static SessionFactory sf = NebjaUtil.getSessionFactory();
 		}
 		return movies;
 	}
-
+/**
+ * gets the movie score
+ */
 	@Override
 	public double getMovieScore(int movieid) {
 		try(Session s = sf.getCurrentSession()){
@@ -42,7 +48,9 @@ static SessionFactory sf = NebjaUtil.getSessionFactory();
 		// TODO Auto-generated method stub
 		return null;
 	}
-
+/**
+ * Gets the title column based on id passed in from database
+ */
 	@Override
 	public String getMovieTitle(int movieid) {
 		try(Session s = sf.getCurrentSession()){

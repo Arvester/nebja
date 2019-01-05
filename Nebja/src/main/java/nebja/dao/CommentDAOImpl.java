@@ -14,7 +14,11 @@ import nebja.util.NebjaUtil;
 
 public class CommentDAOImpl implements CommentDAO {
 static SessionFactory sf = NebjaUtil.getSessionFactory();
-	@Override
+	
+/**
+ * This function gets all comments in our movie database
+ */
+@Override
 	public List<Comment> getAllComments() {
 		List<Comment> comments = new ArrayList<>();	
 		try(Session s = sf.getCurrentSession()){
@@ -33,6 +37,10 @@ static SessionFactory sf = NebjaUtil.getSessionFactory();
 		return null;
 	}
 
+	/**
+	 * This Function makes comments and inserts them into database
+	 */
+	
 	@Override
 	public void makeAComment(Comment comment) {
 		try(Session s = sf.getCurrentSession()){

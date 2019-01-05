@@ -13,7 +13,10 @@ import nebja.util.NebjaUtil;
 
 public class ReviewDAOImpl implements ReviewDAO {
 static SessionFactory sf = NebjaUtil.getSessionFactory();
-	@Override
+/**
+ * Gets all the reviews from review table in database.
+ */
+@Override
 	public List<Review> getAllReviews() {
 			List<Review> reviews = new ArrayList<>();	
 			try(Session s = sf.getCurrentSession()){
@@ -25,7 +28,9 @@ static SessionFactory sf = NebjaUtil.getSessionFactory();
 			}
 			return reviews;
 	}
-
+/**
+ * Gets all the user reviews based on passed in id.
+ */
 	@Override
 	public String getUserReview(int id) {
 		try(Session s = sf.getCurrentSession()){
@@ -40,6 +45,10 @@ static SessionFactory sf = NebjaUtil.getSessionFactory();
 		
 	}
 
+	/**
+	 * Creates a user review passing in a review object.
+	 */
+	
 	@Override
 	public void createUserReview(Review review) {
 		try(Session s = sf.getCurrentSession()){

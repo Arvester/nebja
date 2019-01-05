@@ -18,7 +18,9 @@ import nebja.util.NebjaUtil;
 public class UserDAOImpl implements UserDAO {
 static SessionFactory sf = NebjaUtil.getSessionFactory();
 
-
+/**
+ * Gets all users from the database.
+ */
 	@Override
 	public List<User> getAllUsers() {
 	List<User> users = new ArrayList<>();	
@@ -32,7 +34,9 @@ static SessionFactory sf = NebjaUtil.getSessionFactory();
 		return users;
 		
 	}
-
+/**
+ * Creates a user by inserting a user object into the database.
+ */
 	@Override
 	public void createUser(User user) {
 		try(Session s = sf.getCurrentSession()){
@@ -43,7 +47,9 @@ static SessionFactory sf = NebjaUtil.getSessionFactory();
 		}
 		
 	}
-
+/**
+ * Updates the username field using passed in username at passed in id.
+ */
 	@Override
 	public void updateUsername(String username1,int id) {
 		try(Session s = sf.getCurrentSession()){
@@ -55,7 +61,9 @@ static SessionFactory sf = NebjaUtil.getSessionFactory();
 			s.close();
 		}
 	}
-
+/**
+ * Updates the password field, with a new password at passed in id
+ */
 	@Override
 	public void updatePassword(String password,int id) {
 		try(Session s = sf.getCurrentSession()){
@@ -67,7 +75,9 @@ static SessionFactory sf = NebjaUtil.getSessionFactory();
 			s.close();
 		}
 	}
-
+/**
+ * Updates profileinformation, using passed in profile information string, at passed in id location.
+ */
 	@Override
 	public void updateprofileInfo(String profileInfo,int id) {
 		try(Session s = sf.getCurrentSession()){
@@ -79,7 +89,10 @@ static SessionFactory sf = NebjaUtil.getSessionFactory();
 			s.close();
 		}
 	}
-
+/**
+ * Updates profile photo in database, by passing in a file converting to a byte stream
+ * uploading that byte stream to database to be stored as a blob.
+ */
 	@Override
 	public void updateProfilePhoto(File photo, int id) {
 		try(Session s = sf.getCurrentSession()){
@@ -99,7 +112,10 @@ static SessionFactory sf = NebjaUtil.getSessionFactory();
 		}
 
 	}
-
+/**
+ * Grabs the photo from the id location, converts the returned blob which was a byte stream
+ * to a file and stores the file, then returns the file.
+ */
 	@Override
 	public File getPhoto(int id) {
 		File image = null;

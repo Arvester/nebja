@@ -1,26 +1,40 @@
 package nebja.dao;
 
 import java.sql.Blob;
+import java.util.ArrayList;
 import java.util.List;
 
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
+
 import nebja.beans.Movie;
+import nebja.util.NebjaUtil;
 
 public class MovieDAOImpl implements MovieDAO {
-
-	public MovieDAOImpl() {
-		// TODO Auto-generated constructor stub
-	}
+static SessionFactory sf = NebjaUtil.getSessionFactory();
 
 	@Override
 	public List<Movie> getAllMovies() {
-		// TODO Auto-generated method stub
-		return null;
+		List<Movie> movies = new ArrayList<>();	
+		try(Session s = sf.getCurrentSession()){
+				Transaction tx = s.beginTransaction();
+				movies = s.createQuery("from Movie").getResultList();
+				tx.commit();
+				s.close();
+		}
+		return movies;
 	}
 
 	@Override
 	public double getMovieScore(int movieid) {
-		// TODO Auto-generated method stub
-		return 0;
+		try(Session s = sf.getCurrentSession()){
+			Transaction tx = s.beginTransaction();
+		Movie m = s.get(Movie.class, movieid);
+		double d = m.getAvgscore();
+		return d;
+		}
+		
 	}
 
 	@Override
@@ -31,8 +45,13 @@ public class MovieDAOImpl implements MovieDAO {
 
 	@Override
 	public String getMovieTitle(int movieid) {
-		// TODO Auto-generated method stub
-		return null;
+		try(Session s = sf.getCurrentSession()){
+			Transaction tx = s.beginTransaction();
+			Movie m = s.get(Movie.class,movieid);
+			String title = m.getTitle();
+			return title;
+		}
+		
 	}
 
 }

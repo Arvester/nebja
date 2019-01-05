@@ -11,9 +11,9 @@ import javax.persistence.Table;
 @Entity
 @Table
 public class Comment {
-public Comment(int commentid, String usercomment) {
+public Comment( String usercomment) {
 		super();
-		this.commentid = commentid;
+		
 		this.usercomment = usercomment;
 	}
 @Id

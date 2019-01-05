@@ -11,7 +11,7 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity
-@Table
+@Table(name="MOVIE")
 public class Movie {
 public Movie(int movieid, File moviephoto, String title, double avgscore) {
 		super();
@@ -30,13 +30,13 @@ public Movie(int movieid, String title, double avgscore) {
 @Id
 @GeneratedValue(strategy= GenerationType.AUTO,generator="movieSequence")
 @SequenceGenerator(allocationSize=1, name="movieSequence", sequenceName= "SQ_MOVIE_PK")
-@Column
+@Column(name="MOVIE_ID")
 private int movieid;
-@Column
+@Column(name="MOVIE_PHOTO")
 private File moviephoto;
-@Column
+@Column(name="TITLE")
 private String title;
-@Column
+@Column(name="AVG_SCORE")
 private double avgscore;
 public int getMovieid() {
 	return movieid;

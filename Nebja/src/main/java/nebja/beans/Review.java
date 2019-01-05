@@ -1,10 +1,15 @@
 package nebja.beans;
 
 import javax.persistence.Column;
+import javax.persistence.ConstraintMode;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.ForeignKey;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
@@ -28,6 +33,9 @@ private int reviewid;
 private String moviereview;
 @Column(name="REVIEW_SCORE")
 private int reviewscore;
+@ManyToOne(fetch = FetchType.EAGER)
+@JoinColumn(name = "MOVIE_ID", foreignKey = @ForeignKey(ConstraintMode.CONSTRAINT))
+private Movie movie;
 public int getReviewid() {
 	return reviewid;
 }

@@ -15,5 +15,7 @@
         	<!-- location of domain object mappings -->
        		<mapping class= "nebja.beans.User"></mapping>
        		<mapping class= "nebja.beans.Review"></mapping>
+       		<mapping class= "nebja.beans.Movie"></mapping>
+       		<mapping class= "nebja.beans.Comment"></mapping>
         	</session-factory>
         </hibernate-configuration>

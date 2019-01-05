@@ -1,5 +1,6 @@
 package nebja.dao;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -21,9 +22,9 @@ static SessionFactory sf = NebjaUtil.getSessionFactory();
 				comments = s.createQuery("from Comment").getResultList();
 				tx.commit();
 				s.close();	
-				return comments;
+				
 		}
-	
+		return comments;
 	}
 
 	@Override

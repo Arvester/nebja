@@ -10,7 +10,8 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { SearchFormComponent } from './search-form/search-form.component';
 import { NewsCarouselComponent } from './news-carousel/news-carousel.component';
 import {ApiClientService} from './api-client.service';
-import { RegistrationFormComponent } from './registration-form/registration-form.component'
+import { RegistrationFormComponent } from './registration-form/registration-form.component';
+import { RandomMovieComponent } from './random-movie/random-movie.component'
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { RegistrationFormComponent } from './registration-form/registration-form
     NavbarComponent,
     SearchFormComponent,
     NewsCarouselComponent,
-    RegistrationFormComponent
+    RegistrationFormComponent,
+    RandomMovieComponent
   ],
   imports: [
     BrowserModule,

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ApiClientService } from '../api-client.service';
 
 @Component({
   selector: 'app-search-form',
@@ -7,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SearchFormComponent implements OnInit {
 
-  constructor() { }
+  constructor(private service: ApiClientService) { }
 
   ngOnInit() {
   }

@@ -4,6 +4,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './material';
 import { HttpClientModule } from '@angular/common/http';
 import {MatStepperModule} from '@angular/material/stepper';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './navbar/navbar.component';
@@ -25,7 +26,9 @@ import { RegistrationFormComponent } from './registration-form/registration-form
     BrowserAnimationsModule,
     MaterialModule,
     HttpClientModule,
-    MatStepperModule
+    MatStepperModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [ApiClientService],
   bootstrap: [AppComponent]

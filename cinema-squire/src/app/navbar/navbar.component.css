@@ -6,3 +6,10 @@
   .navSpacer {
     flex: 1 1 auto;
   }
+
+  .toolbar {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+     box-shadow: 0 4px 8px 0 rgba(255, 255, 255, .1);
+  }

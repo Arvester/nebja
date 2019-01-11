@@ -1,0 +1,27 @@
+version: 0.1
+environment_variables:
+    plaintext:
+        S3_BUCKET: "nebja"
+phases:
+    install:
+        commands:
+            - echo Installing source NPM dependencies...
+            - cd cinema-squire && npm install
+    build:
+        commands:
+            - echo Build started on `date`
+            - cd cinema-squire && npm run build
+    post_build:
+        commands:
+            - echo "$CODEBUILD_BUILD_SUCCEEDING"
+            # if build succeeds copy the dist folder into the s3 bucket
+            - |
+                if [ "$CODEBUILD_BUILD_SUCCEEDING" = "1" ]; then
+                    aws s3 cp "dist" "s3://${S3_BUCKET}" "--recursive";
+                    echo "Build completed on date";
+                fi
+artifacts:
+    files:
+        - '**/*'
+    base-directory: 'dist*'
+    discard-paths: yes

@@ -18,7 +18,7 @@ import nebja.beans.User;
 import nebja.service.MovieUserService;
 
 @Controller
-@RequestMapping(value="/profile")
+@RequestMapping(value="/user")
 public class UserController {
 	@Autowired
 	private MovieUserService movieUserService;

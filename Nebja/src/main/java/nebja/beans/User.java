@@ -32,6 +32,10 @@ public User(String username, String password,String profileinfo) {
 	this.password = password;
 	this.profileinfo = profileinfo;
 }
+public User(String username, String password) {
+	this.username = username;
+	this.password = password;
+}
 public User() {
 	
 }
